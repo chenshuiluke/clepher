@@ -1,5 +1,22 @@
-import Image from "next/image";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import EngagementTable from "./components/EngagementTable";
+import Pagination from "./components/Pagination";
 
-export default function Home() {
-  return <main className=""></main>;
-}
+const Home = () => {
+  return (
+    <div className="flex">
+      <Sidebar />
+      <div className="flex-1">
+        <Header />
+        <main className="p-4">
+          <h1 className="text-xl font-semibold">Post Engagements</h1>
+          <EngagementTable />
+          <Pagination />
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
