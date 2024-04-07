@@ -1,7 +1,13 @@
+import Logo from "./Logo";
+import DisplayTag from "./DisplayTag";
+import HeaderEnd from "./HeaderEnd";
+
 const Header = () => {
   return (
-    <div className="flex items-center justify-between p-4 shadow-md">
-      {/* Header content */}
+    <div className="fixed flex min-h-[4rem] w-full items-center gap-4 border-b border-b-slate-200 bg-white p-4">
+      <Logo />
+      <DisplayTag />
+      <HeaderEnd />
     </div>
   );
 };
