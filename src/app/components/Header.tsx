@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className="flex justify-between items-center p-4 shadow-md">
+    <div className="flex items-center justify-between p-4 shadow-md">
       {/* Header content */}
     </div>
   );

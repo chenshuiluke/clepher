@@ -1,6 +1,6 @@
 const Pagination = () => {
   return (
-    <div className="flex justify-center items-center space-x-1 my-4"></div>
+    <div className="my-4 flex items-center justify-center space-x-1"></div>
   );
 };
 

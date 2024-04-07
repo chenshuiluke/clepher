@@ -1,7 +1,7 @@
 const EngagementTable = () => {
   return (
-    <div className="overflow-x-auto mt-6">
-      <table className="table-auto w-full"></table>
+    <div className="mt-6 overflow-x-auto">
+      <table className="w-full table-auto"></table>
     </div>
   );
 };
