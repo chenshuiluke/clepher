@@ -1,8 +1,21 @@
 @tailwind base;
+
+@layer base {
+  .text-color {
+    color: hsl(var(--twc-text-color));
+  }
+  html {
+    @apply text-color;
+    font-family:
+      ui-sans-serif,
+      system-ui,
+      sans-serif,
+      Apple Color Emoji,
+      Segoe UI Emoji,
+      Segoe UI Symbol,
+      Noto Color Emoji;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
-
-svg {
-  display: block;
-  vertical-align: middle;
-}

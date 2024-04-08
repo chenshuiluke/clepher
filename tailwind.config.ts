@@ -1,3 +1,4 @@
+import { createThemes } from "tw-colors";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -15,6 +16,21 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    createThemes({
+      light: {
+        "slate-200": "#e2e8f0",
+        white: "white",
+        "base-300": "#e3e9f4",
+        "text-color": "#394e6a",
+      },
+      dark: {
+        "slate-200": "#0f172a",
+        white: "#0f172a",
+        "base-300": "#0a1120",
+        "text-color": "#c8cbd0",
+      },
+    }),
+  ],
 };
 export default config;
