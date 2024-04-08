@@ -1,19 +1,22 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import StoreProvider from "./StoreProvider";
+import { useAppSelector } from "@/lib/hooks";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Clepher",
   description: "Clepher",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body>{children}</body>
-    </html>
+    <StoreProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </StoreProvider>
   );
 }

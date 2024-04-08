@@ -1,9 +1,12 @@
 "use client";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { toggleTheme } from "@/lib/slices/themeSlice";
 import { useState } from "react";
 
 const MoonIcon = () => (
   <svg
-    className="swap-off h-5 w-5 fill-current"
+    className="swap-off h-5 w-5 text-text-color group-hover:text-white"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
   >
@@ -13,7 +16,8 @@ const MoonIcon = () => (
 
 const SunIcon = () => (
   <svg
-    className="swap-on h-5 w-5 fill-current"
+    className="swap-off h-5 w-5 text-text-color group-hover:text-white"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
   >
@@ -21,10 +25,12 @@ const SunIcon = () => (
   </svg>
 );
 const Nightmode = () => {
-  const [isMoon, setIsMoon] = useState(true);
+  const theme = useAppSelector((state) => state.themeSlice.theme);
+  const dispatch = useAppDispatch();
+  const isMoon = theme === "light";
 
   const toggleIcon = () => {
-    setIsMoon(!isMoon);
+    dispatch(toggleTheme());
   };
 
   return (

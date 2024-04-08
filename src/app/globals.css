@@ -2,9 +2,9 @@
 
 @layer base {
   .text-color {
-    color: hsl(var(--twc-text-color));
+    color: hsl(var(--twc-text-color)) !important;
   }
-  html {
+  #page-root {
     @apply text-color;
     font-family:
       ui-sans-serif,

@@ -7,7 +7,7 @@ const Help = () => {
       viewBox="0 0 24 24"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-5 w-5"
+      className="h-5 w-5 group-hover:text-white"
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"

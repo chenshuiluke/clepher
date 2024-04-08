@@ -1,5 +1,5 @@
 import { ReactElement, ReactPortal } from "react";
-import Report from "./icons/Report";
+import Report from "./header_icons/Report";
 import Link from "next/link";
 
 type HeaderIconProps = {

@@ -1,10 +1,18 @@
 import HeaderIcon from "./HeaderIcon";
-import Avatar from "./icons/Avatar";
-import Help from "./icons/Help";
-import Nightmode from "./icons/Nightmode";
-import Report from "./icons/Report";
+import Avatar from "./menus/Avatar";
+import Help from "./menus/Help";
+import Nightmode from "./header_icons/Nightmode";
+import Report from "./header_icons/Report";
+import Status from "./menu_icons/Status";
+import HeaderMenu from "./HeaderMenu";
 
 const HeaderEnd = () => {
+  const help_menu_items = [
+    {
+      icon: Status,
+      label: "Status",
+    },
+  ];
   return (
     <div className="ml-auto flex gap-2">
       <HeaderIcon>
@@ -13,9 +21,9 @@ const HeaderEnd = () => {
       <HeaderIcon>
         <Nightmode />
       </HeaderIcon>
-      <HeaderIcon>
+      <HeaderMenu menu_items={help_menu_items}>
         <Help />
-      </HeaderIcon>
+      </HeaderMenu>
       <HeaderIcon>
         <Avatar />
       </HeaderIcon>
