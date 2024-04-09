@@ -20,7 +20,7 @@ const HeaderMenu = ({ children, menu_items }: HeaderMenuProps) => {
       >
         {menu_items.map((menu_item) => {
           return (
-            <li role="menuitem">
+            <li role="menuitem" key={menu_item.label}>
               <a className="flex flex-row">
                 {menu_item.icon()}
                 {menu_item.label}
