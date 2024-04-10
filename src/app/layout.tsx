@@ -1,6 +1,6 @@
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
-import { useAppSelector } from "@/lib/hooks";
+import { useAppSelector } from "@/lib/hooks/redux";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

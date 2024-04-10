@@ -1,5 +1,5 @@
 "use client";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks/redux";
 import { toggleTheme } from "@/lib/slices/themeSlice";
 import { useState } from "react";
 
