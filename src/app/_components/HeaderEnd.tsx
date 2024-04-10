@@ -17,24 +17,27 @@ const HeaderEnd = () => {
     {
       icon: Status,
       label: "Status",
-      href: "",
+      href: "https://status.clepher.com/",
+      new_tab: true,
     },
     {
       icon: Community,
       label: "Community",
-      href: "",
+      href: "https://www.facebook.com/groups/clepher/",
+      new_tab: true,
     },
     {
       icon: KnowledgeBase,
       label: "Knowledge Base",
-      href: "",
+      href: "https://clepher.atlassian.net/servicedesk/customer/portals",
+      new_tab: true,
     },
   ];
   const user_menu_items = [
     {
       icon: Home,
       label: "Home",
-      href: "",
+      href: "/",
     },
     {
       icon: Billing,

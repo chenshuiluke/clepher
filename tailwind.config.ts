@@ -4,7 +4,7 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/_components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -25,6 +25,7 @@ const config: Config = {
         "text-color": "#394e6a",
         "sidebar-bg-active-color": "#1e293b",
         "sidebar-active-color": "#c5cbd3",
+        "content-bg": "#f0f9ff",
       },
       dark: {
         "slate-200": "#0f172a",
@@ -33,6 +34,7 @@ const config: Config = {
         "text-color": "#c8cbd0",
         "sidebar-bg-active-color": "#1e293b",
         "sidebar-active-color": "#c5cbd3",
+        "content-bg": "#0c1425",
       },
     }),
   ],

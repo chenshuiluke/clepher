@@ -1,6 +1,6 @@
 import "./globals.css";
+import PageRoot from "./PageRoot";
 import StoreProvider from "./StoreProvider";
-import { useAppSelector } from "@/lib/hooks/redux";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,7 +15,9 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body>
+          <PageRoot>{children}</PageRoot>
+        </body>
       </html>
     </StoreProvider>
   );

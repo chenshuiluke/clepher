@@ -11,7 +11,12 @@ import useOutsideClick from "@/lib/hooks/useOutsideClick";
 import { Url } from "next/dist/shared/lib/router/router";
 
 type HeaderMenuProps = {
-  menu_items: Array<{ icon: () => ReactElement; label: string; href: Url }>;
+  menu_items: Array<{
+    icon: () => ReactElement;
+    label: string;
+    href: Url;
+    new_tab?: Boolean;
+  }>;
   children: ReactNode;
 };
 const HeaderMenu = ({ children, menu_items }: HeaderMenuProps) => {
@@ -40,6 +45,7 @@ const HeaderMenu = ({ children, menu_items }: HeaderMenuProps) => {
                 <li role="menuitem" key={menu_item.label}>
                   <Link
                     href={menu_item.href}
+                    {...(menu_item.new_tab ? { target: "_blank" } : {})}
                     className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 hover:bg-slate-600/20"
                   >
                     {menu_item.icon()}

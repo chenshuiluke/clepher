@@ -3,7 +3,7 @@ const KnowledgeBase = () => {
     <svg
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 512 512"
       className="h-6 w-6"
       height="1em"
