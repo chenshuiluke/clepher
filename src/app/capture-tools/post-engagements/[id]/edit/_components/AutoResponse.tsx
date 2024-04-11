@@ -64,6 +64,7 @@ const AutoResponse = () => {
       {comments.map((comment, idx) => {
         return (
           <ExitableInput
+            key={comment.toString()}
             onClear={() => {
               dispatch(removeComment(idx));
             }}

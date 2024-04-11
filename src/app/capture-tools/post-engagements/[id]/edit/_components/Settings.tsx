@@ -64,9 +64,10 @@ const Settings = () => {
       </div>
       <h1 className="border-b border-b-base-300">Require a Post Reaction</h1>
       <div className="flex flex-row flex-wrap gap-2">
-        {requiredReactions.map((reaction: String) => {
+        {requiredReactions.map((reaction: String, idx) => {
           return (
             <Badge
+              key={idx}
               onClick={(text) => {
                 dispatch(removeRequiredReaction(text));
               }}
@@ -80,6 +81,7 @@ const Settings = () => {
         {reactionList.map((reaction: String) => {
           return (
             <Image
+              key={reaction.toString()}
               className="rounded-full p-2 hover:bg-base-300"
               src={`/img/reactions/reactions_${reaction}.png`}
               width={56}
@@ -93,9 +95,10 @@ const Settings = () => {
 
       <h1 className="">Exclude Comments With These Keywords</h1>
       <div className="flex flex-row flex-wrap gap-2">
-        {excludedKeywords.map((keyword: String) => {
+        {excludedKeywords.map((keyword: String, idx) => {
           return (
             <Badge
+              key={idx}
               onClick={(text) => {
                 dispatch(removeExcludedKeyword(text));
               }}
@@ -112,9 +115,10 @@ const Settings = () => {
 
       <h1 className="">Only Trigger For Comments With These Keywords</h1>
       <div className="flex flex-row flex-wrap gap-2">
-        {triggerKeywords.map((keyword: String) => {
+        {triggerKeywords.map((keyword: String, idx) => {
           return (
             <Badge
+              key={idx}
               onClick={(text) => {
                 dispatch(removeTriggerKeyword(text));
               }}
