@@ -26,6 +26,7 @@ const config: Config = {
         "sidebar-bg-active-color": "#1e293b",
         "sidebar-active-color": "#c5cbd3",
         "content-bg": "#f0f9ff",
+        "data-table-btn-bg-color": "#0069ff",
       },
       dark: {
         "slate-200": "#0f172a",
@@ -35,6 +36,7 @@ const config: Config = {
         "sidebar-bg-active-color": "#1e293b",
         "sidebar-active-color": "#c5cbd3",
         "content-bg": "#0c1425",
+        "data-table-btn-bg-color": "#0069ff",
       },
     }),
   ],

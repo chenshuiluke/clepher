@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import sampleData from "../sample_data";
-import Record from "../types/Record";
+import Record from "../types/record";
 
 interface PostEngagementState {
   data: Array<Record>;
@@ -46,9 +46,43 @@ export const postEngagementSlice = createSlice({
       state.numSelected = 0;
       return state;
     },
+    gotoPreviousPage: (state) => {
+      if (state.currentPage > 1) {
+        state.currentPage--;
+      }
+      return state;
+    },
+    gotoNextPage: (state) => {
+      if (state.currentPage < state.lastPage) {
+        state.currentPage++;
+      }
+      return state;
+    },
+    gotoFirstPage: (state) => {
+      state.currentPage = 1;
+      return state;
+    },
+    gotoLastPage: (state) => {
+      state.currentPage = state.lastPage;
+      return state;
+    },
+    gotoPage: (state, action: PayloadAction<number>) => {
+      const destinationPage = action.payload;
+      if (destinationPage <= state.lastPage && destinationPage > 0) {
+        state.currentPage = destinationPage;
+      }
+    },
   },
 });
 
-export const { toggleSelected, selectAll, deselectAll } =
-  postEngagementSlice.actions;
+export const {
+  toggleSelected,
+  selectAll,
+  deselectAll,
+  gotoNextPage,
+  gotoPreviousPage,
+  gotoFirstPage,
+  gotoLastPage,
+  gotoPage,
+} = postEngagementSlice.actions;
 export default postEngagementSlice.reducer;

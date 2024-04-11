@@ -3,11 +3,17 @@
 import { useAppDispatch, useAppSelector } from "@/lib/hooks/redux";
 import {
   deselectAll,
+  gotoPage,
   selectAll,
   toggleSelected,
 } from "@/lib/slices/postEngagementSlice";
-import Record from "@/lib/types/Record";
+import Record from "@/lib/types/record";
 import React, { useEffect, useRef, useState } from "react";
+import NextPage from "./NextOrPreviousPage";
+import NextOrPreviousPage from "./NextOrPreviousPage";
+import SkipToLastOrFirstPage from "./SkipToLastOrFirstPage";
+import MessengerIcon from "./MessengerIcon";
+import ActionPopover from "./ActionPopover";
 
 const PostEngagementsDataTable: React.FC = () => {
   const itemsPerPage = 10;
@@ -36,6 +42,15 @@ const PostEngagementsDataTable: React.FC = () => {
     }
   };
 
+  const handleGotoPage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    try {
+      const destinationPage = parseInt(e.target.value);
+      dispatch(gotoPage(destinationPage));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     if (headerCheckBoxRef.current != null) {
       if (numSelected == data.length) {
@@ -47,7 +62,7 @@ const PostEngagementsDataTable: React.FC = () => {
         headerCheckBoxRef.current.indeterminate = false;
       }
     }
-  }, [numSelected]);
+  }, [numSelected, data]);
 
   useEffect(() => {
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -66,42 +81,48 @@ const PostEngagementsDataTable: React.FC = () => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium  tracking-wider text-gray-500"
+                    className="w-[20px]  py-3 text-left text-xs  font-medium tracking-wider "
                   >
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      ref={headerCheckBoxRef}
-                      onChange={() => handleSelectOrDeselectAll()}
-                    />
+                    <div className="px-3">
+                      <input
+                        type="checkbox"
+                        className="checkbox"
+                        ref={headerCheckBoxRef}
+                        onChange={() => handleSelectOrDeselectAll()}
+                      />
+                    </div>
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium  tracking-wider text-gray-500"
+                    className="w-[20px]  py-3 text-left text-xs  font-medium tracking-wider"
+                  ></th>
+                  <th
+                    scope="col"
+                    className="w-[150px]  py-3 text-left text-xs  font-medium tracking-wider text-gray-500"
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium  tracking-wider text-gray-500"
+                    className="w-[150px]  py-3 text-left text-xs  font-medium tracking-wider text-gray-500"
                   >
                     Engaged / Unique
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium  tracking-wider text-gray-500"
+                    className="w-[150px]  py-3 text-left text-xs  font-medium tracking-wider text-gray-500"
                   >
                     Acquired
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium  tracking-wider text-gray-500"
+                    className="w-[150px]  py-3 text-left text-xs  font-medium tracking-wider text-gray-500"
                   >
                     Conversion
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium  tracking-wider text-gray-500"
+                    className="w-[150px]  py-3 text-left text-xs  font-medium tracking-wider text-gray-500"
                   >
                     Actions
                   </th>
@@ -110,9 +131,9 @@ const PostEngagementsDataTable: React.FC = () => {
               <tbody>
                 {recordsToDisplay.map((item) => (
                   <tr key={item.id} className="bg-white">
-                    <td>
+                    <td className="w-[20px]">
                       <div
-                        className="px-1"
+                        className="w-[20px] px-3"
                         onClick={() => {
                           dispatch(toggleSelected(item.id));
                         }}
@@ -124,31 +145,51 @@ const PostEngagementsDataTable: React.FC = () => {
                         />
                       </div>
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm ">
+                    <td className="w-[20px] whitespace-nowrap  py-4 text-sm ">
+                      <MessengerIcon />
+                    </td>
+                    <td className="w-[150px] whitespace-nowrap  py-4 text-sm ">
                       {item.name}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm">
+                    <td className="w-[150px] whitespace-nowrap  py-4 text-sm">
                       {item.engaged} / {item.unique}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm ">
+                    <td className="w-[150px] whitespace-nowrap  py-4  text-sm">
                       {item.acquired}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm ">
+                    <td className="w-[150px] whitespace-nowrap  py-4 text-sm">
                       {item.conversion}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm ">
-                      <a
-                        href="#"
-                        className="text-indigo-600 hover:text-indigo-900"
-                      >
-                        Actions
-                      </a>
+                    <td className="w-[150px] whitespace-nowrap  py-4 text-sm">
+                      <ActionPopover />
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+        </div>
+      </div>
+      <div className="flex flex-row items-center justify-center gap-4 py-3.5">
+        <SkipToLastOrFirstPage left={true} disabled={currentPage <= 1} />
+        <NextOrPreviousPage left={true} disabled={currentPage <= 1} />
+        <NextOrPreviousPage disabled={currentPage >= lastPage} />
+        <SkipToLastOrFirstPage disabled={currentPage >= lastPage} />
+        <p>
+          Page{" "}
+          <strong>
+            {currentPage} of {lastPage}
+          </strong>
+        </p>
+        <div className="flex flex-row items-center justify-center gap-1">
+          <p>Go to page: </p>
+          <input
+            type="number"
+            min={1}
+            max={lastPage}
+            onChange={(e) => handleGotoPage(e)}
+            className="input input-sm input-bordered w-16 p-1 focus:outline-offset-0"
+          />
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ const PostEngagement = () => {
     <svg
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 24 24"
       className="h-4 w-4"
       height="1em"
