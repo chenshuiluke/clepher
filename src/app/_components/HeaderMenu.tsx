@@ -36,7 +36,7 @@ const HeaderMenu = ({ children, menu_items }: HeaderMenuProps) => {
       {isMenuOpen && (
         <>
           <ul
-            className="bg-base-100  absolute right-0 mt-3 w-52 rounded-2xl bg-white p-2 shadow"
+            className="bg-base-100  absolute right-0 z-10 mt-3 w-52 rounded-2xl bg-white p-2 shadow"
             role="menu"
             ref={menuRef}
           >
