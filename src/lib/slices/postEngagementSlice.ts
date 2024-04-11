@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import sampleData from "../sample_data";
 import Record from "../types/record";
-
+import EditEngagementState from "../types/settings";
 interface PostEngagementState {
   data: Array<Record>;
   numSelected: number;
@@ -20,6 +20,17 @@ export const postEngagementSlice = createSlice({
   name: "postEngagementSlice",
   initialState,
   reducers: {
+    savePost: (
+      state,
+      action: PayloadAction<{ settings: EditEngagementState; id: number }>,
+    ) => {
+      const { settings, id } = action.payload;
+      const index = state.data.findIndex((record) => record.id == id);
+      if (index > -1) {
+        state.data[index].settings = settings;
+      }
+      return state;
+    },
     toggleSelected: (state, action: PayloadAction<number>) => {
       const idToFind = action.payload;
 
@@ -43,6 +54,16 @@ export const postEngagementSlice = createSlice({
         element.selected = false;
         return element;
       });
+      state.numSelected = 0;
+      return state;
+    },
+    deleteAllSelected: (state) => {
+      state.data = state.data.filter((record) => !record.selected);
+      state.currentPage = 1;
+      state.lastPage = Math.ceil(state.data.length / 10);
+      if (state.lastPage == 0) {
+        state.lastPage = 1;
+      }
       state.numSelected = 0;
       return state;
     },
@@ -84,5 +105,7 @@ export const {
   gotoFirstPage,
   gotoLastPage,
   gotoPage,
+  savePost,
+  deleteAllSelected,
 } = postEngagementSlice.actions;
 export default postEngagementSlice.reducer;

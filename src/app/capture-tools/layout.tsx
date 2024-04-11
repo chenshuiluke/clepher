@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import CaptureTools from "./_components/CaptureTools";
 
 const CaptureToolsLayout = ({
@@ -5,13 +8,22 @@ const CaptureToolsLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const pathname = usePathname();
   return (
-    <div className="grid w-full grid-cols-9 gap-2">
-      <div className="col-span-2 px-6">
-        <CaptureTools />
-      </div>
-      <div className="col-span-7 px-6">{children}</div>
-    </div>
+    <>
+      {pathname === "/capture-tools/post-engagements" ? (
+        <>
+          <div className="grid w-full grid-cols-9 gap-2">
+            <div className="col-span-2 px-6">
+              <CaptureTools />
+            </div>
+            <div className="col-span-7 px-6">{children}</div>
+          </div>
+        </>
+      ) : (
+        <>{children}</>
+      )}
+    </>
   );
 };
 

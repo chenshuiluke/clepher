@@ -1,3 +1,5 @@
+import EditEngagementState from "./settings";
+
 type Record = {
   id: number;
   name: string;
@@ -6,6 +8,7 @@ type Record = {
   acquired: number;
   conversion: string;
   selected?: boolean;
+  settings?: EditEngagementState;
 };
 
 export default Record;

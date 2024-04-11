@@ -1,8 +1,11 @@
 import useOutsideClick from "@/lib/hooks/useOutsideClick";
+import Record from "@/lib/types/record";
 import Link from "next/link";
 import { useRef, useState } from "react";
-
-const ActionPopover = () => {
+type ActionPopoverProps = {
+  record: Record;
+};
+const ActionPopover = ({ record }: ActionPopoverProps) => {
   const menuRef = useRef(null);
   const btnRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
@@ -25,22 +28,10 @@ const ActionPopover = () => {
           >
             <li role="menuitem">
               <Link
-                href={""}
+                href={`/capture-tools/post-engagements/${record.id}/edit`}
                 className="flex flex-row items-center gap-2 rounded-lg px-2 py-1 hover:bg-slate-600/20"
               >
                 <p className="w-full text-[12px]">Edit</p>
-              </Link>
-              <Link
-                href={""}
-                className="flex flex-row items-center gap-2 rounded-lg px-2 py-1 hover:bg-slate-600/20"
-              >
-                <p className="w-full text-[12px]">Rename</p>
-              </Link>
-              <Link
-                href={""}
-                className="flex flex-row items-center gap-2 rounded-lg px-2 py-1 hover:bg-slate-600/20"
-              >
-                <p className="w-full text-[12px]">Delete</p>
               </Link>
             </li>
           </ul>

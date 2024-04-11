@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import themeSlice from "./slices/themeSlice";
 import postEngagementSlice from "./slices/postEngagementSlice";
+import editEngagementSlice from "./slices/editEngagementSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       themeSlice,
       postEngagementSlice,
+      editEngagementSlice,
     },
   });
 };
