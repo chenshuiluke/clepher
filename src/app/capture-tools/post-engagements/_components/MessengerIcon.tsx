@@ -12,7 +12,6 @@ const MessengerIcon = () => {
       viewBox="0 0 40 40"
       enable-background="new 0 0 40 40"
     >
-      {" "}
       <image
         id="image0"
         width="40"
