@@ -2,9 +2,14 @@ import React, { useState } from "react";
 type ExitableInputProps = {
   onChange: (text: String) => void;
   onClear: () => void;
-  value: String;
+  defaultValue: String;
 };
-const ExitableInput = ({ onChange, onClear, value }: ExitableInputProps) => {
+const ExitableInput = ({
+  onChange,
+  onClear,
+  defaultValue = "",
+}: ExitableInputProps) => {
+  const [value, setValue] = useState(defaultValue);
   const clearInput = () => onClear();
 
   return (
@@ -13,7 +18,10 @@ const ExitableInput = ({ onChange, onClear, value }: ExitableInputProps) => {
         type="text"
         value={value?.toString()}
         // TODO: Add debouncing
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}
         className="w-full p-2 pl-4 text-gray-700 focus:outline-none"
         placeholder="Type here..."
       />

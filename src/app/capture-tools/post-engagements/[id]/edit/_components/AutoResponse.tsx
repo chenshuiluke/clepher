@@ -64,14 +64,14 @@ const AutoResponse = () => {
       {comments.map((comment, idx) => {
         return (
           <ExitableInput
-            key={comment.toString()}
+            key={idx}
             onClear={() => {
               dispatch(removeComment(idx));
             }}
             onChange={(text) => {
               dispatch(changeComment({ index: idx, value: text }));
             }}
-            value={comment}
+            defaultValue={comment}
           />
         );
       })}
