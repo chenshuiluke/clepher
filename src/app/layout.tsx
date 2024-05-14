@@ -4,8 +4,8 @@ import StoreProvider from "./StoreProvider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Clepher",
-  description: "Clepher",
+  title: "Template",
+  description: "Template",
 };
 export default function RootLayout({
   children,
